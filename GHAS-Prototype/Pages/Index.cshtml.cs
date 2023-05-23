@@ -15,7 +15,12 @@ namespace GHAS_Prototype.Pages
 
         public void OnGet()
         {
+        }
 
+        public void OnPost()
+        {
+            string input = Request.Form["text"];
+            Response.WriteAsync($"<HTML>{input}</HTML>");
         }
     }
 }
