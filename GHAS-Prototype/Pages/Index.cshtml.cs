@@ -13,17 +13,9 @@ namespace GHAS_Prototype.Pages
             _logger = logger;
         }
 
-        [BindProperty]
-        public string Title { get; set; }
-
         public void OnGet()
         {
 
-        }
-
-        public async Task<IActionResult> OnPostAsync() 
-        {
-            return Page();
         }
     }
 }

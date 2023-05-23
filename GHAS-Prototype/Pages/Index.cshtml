@@ -2,15 +2,22 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    var title = Model.Title ?? "Welcome";
 }
 
 <div class="text-center">
-    <h1 class="display-4">@title</h1>
+    <h1 id="title" class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    <form method="post">
-        <input asp-for="Title" />
-        <button>submit</button>
-    </form>
+    <input id="title-input" />
+    <button id="submit">submit</button>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        document.getElementById("submit").addEventListener("click", () => {
+            document.getElementById("title").textContent = document.getElementById("title-input").value;
+        });
+    </script>
+}
