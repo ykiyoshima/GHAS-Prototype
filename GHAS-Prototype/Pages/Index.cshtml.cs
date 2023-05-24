@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace GHAS_Prototype.Pages
 {
@@ -25,11 +26,11 @@ namespace GHAS_Prototype.Pages
             {
                 SqlCommand sqlCommand = new SqlCommand()
                 {
-                    CommandText = "SELECT ProductId FROM Products WHERE ProductName = '" + input + "'",
-                    CommandType = CommandType.Text,
+                    CommandText = "sp_GetProductIdFromName",
+                    CommandType = CommandType.StoredProcedure,
                 };
 
-                SqlDataReader reader = sqlCommand.ExecuteReader();
+                sqlCommand.Parameters.Add("@productName", SqlDbType.NVarChar, 128).Value = input;
             }
         }
     }
