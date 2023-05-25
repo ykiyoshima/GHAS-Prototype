@@ -26,11 +26,9 @@ namespace GHAS_Prototype.Pages
             {
                 SqlCommand sqlCommand = new SqlCommand()
                 {
-                    CommandText = "sp_GetProductIdFromName",
-                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "SELECT ProductId FROM Products WHERE ProductName = '" + input + "'",
+                    CommandType = CommandType.Text,
                 };
-
-                sqlCommand.Parameters.Add("@productName", SqlDbType.NVarChar, 128).Value = input;
             }
         }
     }
